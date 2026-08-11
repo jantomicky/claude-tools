@@ -2,7 +2,7 @@
 
 - Write all artifacts (skill files, docs, commit messages, code comments) in English, no matter what language
   the conversation uses.
-- Use direct commands. Avoid unnecessary em-dashes. Keep language clear and concise.
+- Use direct commands. Keep language clear and concise.
 
 ## Adding
 
