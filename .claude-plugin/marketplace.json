@@ -1,0 +1,14 @@
+{
+    "name": "jantomicky",
+    "owner": {
+        "name": "Jan Tomický",
+        "email": "jan@tomicky.cz"
+    },
+    "plugins": [
+        {
+            "name": "claude-tools",
+            "source": "./",
+            "description": "General-purpose Claude Code skills: response shaping, session recall."
+        }
+    ]
+}
