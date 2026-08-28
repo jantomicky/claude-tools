@@ -10,6 +10,8 @@ General-purpose Claude Code skills, not tied to any stack or project.
 | `recall` | Stores or resumes a `RECALL.md` so a fresh session (or crash/restart) can pick up without replaying the conversation. |
 | `portadesign-palette` | Default color palette for visual work (Artifacts, mockups, diagrams), extracted from portadesign.cz. |
 
+The `tldr` skill also loads automatically at every session start via a `SessionStart` hook (`hooks/hooks.json`) — no `/tldr` call needed.
+
 ## Installation
 
 ```
