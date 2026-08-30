@@ -18,7 +18,9 @@ replaying the transcript.
 - Session start: if `RECALL.md` exists and hasn't been read yet this session, surface it. Don't read it silently
   and don't ignore it. State its age from the `Version` line and ask before reading, e.g. "There's a RECALL
   file from 6 days ago (2026-08-05). Want me to read it?" No fixed staleness threshold. Let the user decide.
-  After reading it, offer to delete it, since it's no longer needed once its context is loaded.
+  After reading it, delete it. Don't ask, don't keep it "just in case" — its context is loaded, and a stale
+  RECALL.md misleads the next session. State that you deleted it. Write a fresh one later if the session needs
+  another handoff.
 - Before a commit: if `RECALL.md` exists, flag it to the user and ask whether to include it in the commit or
   leave it out. Don't decide silently either way.
 
