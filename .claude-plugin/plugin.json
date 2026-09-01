@@ -1,10 +1,14 @@
 {
     "name": "claude-tools",
-    "description": "General-purpose Claude Code skills, not tied to any specific stack or project: response shaping, session recall.",
-    "version": "0.2.2",
+    "description": "General-purpose Claude Code skills and hooks, not tied to any specific stack or project: response shaping, code-comment discipline, session recall.",
+    "version": "0.3.0",
     "author": {
-        "name": "Jan Tomický",
+        "name": "Jan Tomick\u00fd",
         "email": "jan@tomicky.cz"
     },
-    "keywords": ["skills", "productivity", "workflow"]
+    "keywords": [
+        "skills",
+        "productivity",
+        "workflow"
+    ]
 }
