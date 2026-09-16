@@ -15,3 +15,5 @@
 
 - Bump `version` in `.claude-plugin/plugin.json` in the same commit as any change. `/plugin update` compares
   versions, not content.
+- Add a `CHANGELOG.md` entry for the new version in the same commit. Use Keep a Changelog sections (`Added`,
+  `Changed`, `Fixed`, `Removed`), one short line per change.
