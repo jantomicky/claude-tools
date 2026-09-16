@@ -11,16 +11,16 @@ import re
 import sys
 
 HASH_LANGS = {".py", ".yml", ".yaml", ".sh", ".bash", ".zsh", ".rb", ".tf", ".toml", ".conf", ".ini"}
-SLASH_LANGS = {".php", ".js", ".jsx", ".ts", ".tsx", ".go", ".java", ".c", ".cpp", ".h", ".rs", ".css", ".scss"}
+SLASH_LANGS = {".php", ".js", ".jsx", ".ts", ".tsx", ".go", ".java", ".kt", ".c", ".cpp", ".h", ".rs", ".scss"}
 SKIP_PATH = re.compile(r"/(vendor|node_modules|\.git|var/cache|dist|build)/")
 DIRECTIVE = re.compile(
-    r"(noqa|type:\s*ignore|fmt:\s*(on|off)|pylint|mypy|ruff|isort|black|coverage|pragma|eslint|ts-ignore|"
-    r"ts-expect-error|prettier|phpcs|phpstan|psalm|codeCoverageIgnore|shellcheck|hadolint|yamllint|ansible-lint|"
-    r"!/|-\*-|encoding:|region|endregion)",
+    r"(\bnoqa\b|\btype:\s*ignore|\b(fmt|pylint|mypy|ruff|isort|pyright|yamllint|ansible-lint):|pragma:|"
+    r"eslint-|@ts-|prettier-ignore|phpcs:|@phpstan-|@psalm-|@codeCoverageIgnore|shellcheck\s|hadolint\s|"
+    r"^#!|-\*-|coding[:=]|^(#|//)\s*#?(end)?region\b)",
     re.IGNORECASE,
 )
 MAX_REPORTED = 12
-STRING_LITERAL = re.compile("'[^']*'" + '|"[^"]*"')
+STRING_LITERAL = re.compile(r"'(?:\\.|[^'\\])*'|\"(?:\\.|[^\"\\])*\"|`(?:\\.|[^`\\])*`")
 
 
 def strip_strings(line):
@@ -36,18 +36,22 @@ def trailing_comment(line, markers):
     return None
 
 
-def added_text(payload):
-    name = payload.get("tool_name", "")
-    ti = payload.get("tool_input", {}) or {}
-    if name == "Write":
-        return ti.get("content", "") or ""
-    if name == "Edit":
-        if ti.get("replace_all") is None and "edits" in ti:
-            return "\n".join(e.get("new_string", "") for e in ti.get("edits", []))
-        return ti.get("new_string", "") or ""
-    if name in {"MultiEdit", "NotebookEdit"}:
-        return "\n".join(e.get("new_string", "") for e in ti.get("edits", [])) or ti.get("new_source", "") or ""
-    return ""
+def added_chunks(payload):
+    tool_input = payload.get("tool_input") or {}
+    if "content" in tool_input:
+        return [tool_input["content"] or ""]
+    if "edits" in tool_input:
+        return [edit.get("new_string") or "" for edit in tool_input["edits"]]
+    return [tool_input.get("new_string") or ""]
+
+
+def first_line_in_file(path, chunk):
+    try:
+        text = open(path, encoding="utf-8", errors="replace").read()
+    except OSError:
+        return 1
+    index = text.find(chunk)
+    return text.count("\n", 0, index) + 1 if index >= 0 else 1
 
 
 def suffix_of(path):
@@ -105,7 +109,10 @@ def main():
     if not path or SKIP_PATH.search(path) or (suffix not in HASH_LANGS and suffix not in SLASH_LANGS):
         return 0
 
-    hits = offenders(added_text(payload), suffix)
+    hits = []
+    for chunk in added_chunks(payload):
+        offset = first_line_in_file(path, chunk) - 1 if chunk else 0
+        hits += [(number + offset, text) for number, text in offenders(chunk, suffix)]
     if not hits:
         return 0
 

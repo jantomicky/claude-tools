@@ -1,7 +1,7 @@
 {
     "name": "claude-tools",
-    "description": "General-purpose Claude Code skills and hooks, not tied to any specific stack or project: response shaping, code-comment discipline, session recall.",
-    "version": "0.4.0",
+    "description": "General-purpose Claude Code skills, hooks, and output style: terse responses, code-comment discipline, session recall, design palette.",
+    "version": "0.5.0",
     "author": {
         "name": "Jan Tomick\u00fd",
         "email": "jan@tomicky.cz"

@@ -1,49 +1,38 @@
 ---
 name: code-comments
-description: Write code without explanatory comments — in any language (PHP, Python, YAML/Ansible, shell, JS/TS). A comment survives only if it captures a non-obvious WHY. Always applies when writing or editing code.
+description: Write code without explanatory comments in any language (PHP, Python, YAML/Ansible, shell, JS/TS). Keep a comment only if it captures a non-obvious WHY. Always applies when writing or editing code.
 ---
 
 # Code comments
 
-Default is **no comment**. Well-named identifiers, types, and small functions already state what the code does;
-a comment restating that is noise that rots out of sync with the code.
+Default to no comment. Names, types, and small functions state what code does. A comment restating it rots.
 
-## The WHY test
+## When to use
 
-Keep a comment only if it explains something the code cannot: a non-obvious reason, a workaround for an upstream
-bug (link it), a business rule with no other home, a deliberate deviation from the obvious approach.
+Every time you write or edit code.
 
-Delete on sight:
+## Keep a comment only if
 
-1. Restating the next line (`// increment counter`, `# set the variable`).
-2. Section banners and step narration (`// --- Setup ---`, `# 1. Fetch data`, `// arrange/act/assert`).
-3. Line comments duplicating an adjacent docblock.
-4. Commented-out code — git has it.
-5. Changelog notes in code (`# added 2025-04, JT`) — that is what commits are for.
+It explains what the code cannot: a non-obvious reason, an upstream-bug workaround (link it), a business rule
+with no other home, or a deliberate deviation from the obvious approach.
 
-## Instead of a comment
+## Delete
 
-Extract a named function or variable, tighten the type, or rename the identifier. If a block needs a comment to be
-readable, that is a signal to restructure it, not to annotate it.
+1. Comments restating the next line (`// increment counter`).
+2. Banners and step narration (`// --- Setup ---`, `# 1. Fetch data`, `// arrange`).
+3. Comments duplicating an adjacent docblock, a type, or an Ansible task `name:`.
+4. Commented-out code and changelog notes (`# added 2025-04, JT`). Git has both.
 
-## Per language
+Need a comment to make a block readable? Extract a function, name a variable, or tighten a type instead.
 
-- **PHP**: no `//` narration. PHPDoc blocks (`/** ... */`) are fine and stay — they carry what the signature
-  cannot (`@param array<int, Foo>`, `@throws`, PHPStan generics) and IDEs read them. Keep them factual: a
-  `@param`/`@return`/`@throws` contract, not a prose walkthrough of the method body.
-- **Python**: docstrings on public modules, classes, and functions are a convention — keep them, but state purpose
-  and contract, not a line-by-line walkthrough. Inline `#` comments follow the WHY test like everywhere else.
-- **YAML / Ansible**: a task's `name:` is the documentation — never pair it with a `#` comment saying the same
-  thing. Group headers above a block of tasks are banners; delete them.
-- **Shell**: shebang and `set -euo pipefail` need no explanation. Comment only genuinely cryptic expansions.
-- **JS/TS**: types replace type comments. JSDoc only where it adds a contract the types cannot express.
+## Keep
 
-## Tool directives are not comments
-
-`# noqa`, `# type:`, `# fmt: off`, `// eslint-disable`, `// @ts-expect-error`, `@phpstan-ignore`, `shellcheck disable`
-are instructions to tooling. Keep them, and where the suppression is non-obvious add the WHY on the same line.
+1. **Docblocks as contracts.** PHPDoc (`@param array<int, Foo>`, `@throws`), Python docstrings on public API,
+   JSDoc the types cannot express. State purpose and contract, not a walkthrough.
+2. **Tool directives.** `# noqa`, `# type: ignore`, `// eslint-disable`, `@phpstan-ignore`, `shellcheck disable`.
+   Add the WHY on the same line when the suppression is non-obvious.
+3. **Shebangs.** No comment on `set -euo pipefail`.
 
 ## Before finishing
 
-Re-read every line you touched and delete each comment failing the WHY test. This is a mandatory last step, not an
-optional polish pass — it is the rule agents violate most.
+Re-read every line you touched. Delete each comment that fails the test. Agents skip this step most.
