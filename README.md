@@ -11,7 +11,9 @@ General-purpose Claude Code skills, not tied to any stack or project.
 | `recall` | Stores or resumes a `RECALL.md` so a fresh session (or crash/restart) can pick up without replaying the conversation. |
 | `portadesign-palette` | Default color palette for visual work (Artifacts, mockups, diagrams), extracted from portadesign.cz. |
 
-`tldr` and `code-comments` load automatically at every session start via a `SessionStart` hook (`hooks/hooks.json`) — no slash call needed.
+`tldr` and `code-comments` load automatically at every session start via a `SessionStart` hook (`hooks/hooks.json`) — no slash call needed. A `UserPromptSubmit` hook re-reminds the agent to follow `tldr` on every prompt, so the rule doesn't fade in long sessions.
+
+For the strongest effect, enable the bundled `TLDR` output style (`output-styles/tldr.md`) via `/config` → Output style.
 
 A `PostToolUse` hook (`hooks/check-code-comments.py`) additionally scans every `Write`/`Edit` for comment lines that fail the WHY test and warns the agent. It never blocks an edit; PHPDoc blocks, Python docstrings and tooling directives (`# noqa`, `// eslint-disable`, ...) are ignored. Subagents inherit it, which `SessionStart` context does not.
 

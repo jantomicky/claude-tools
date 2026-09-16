@@ -23,6 +23,17 @@
                     }
                 ]
             }
+        ],
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "echo 'Follow the tldr skill for this response.'",
+                        "timeout": 5
+                    }
+                ]
+            }
         ]
     }
 }
