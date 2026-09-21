@@ -11,15 +11,19 @@ from pathlib import Path
 
 PLUGIN_ROOT = Path(__file__).resolve().parent.parent
 ALWAYS_ON = ("tldr", "code-comments")
+RECALL_MEANING = (
+    "\n\n\"Recall\" (\"ulož recall\", \"načti recall\") means the recall skill and RECALL.md in the project root,"
+    " never auto-memory."
+)
 
 
 def recall_notice():
     recall = Path(os.environ.get("CLAUDE_PROJECT_DIR", ".")) / "RECALL.md"
     if not recall.is_file():
-        return ""
+        return RECALL_MEANING
     match = re.search(r"Version\W*:?\**\s*(.+)$", recall.read_text(errors="replace"), re.MULTILINE)
     version = match.group(1).strip() if match else "unknown date"
-    return f"\n\nRECALL.md exists in the project root (Version: {version}). Follow the recall skill."
+    return RECALL_MEANING + f" RECALL.md exists in the project root (Version: {version}). Follow the recall skill."
 
 
 def main():

@@ -3,6 +3,12 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.5.2] - 2026-09-21
+
+### Fixed
+
+- `recall`: trigger on the word "recall" and forbid saving it as auto-memory, which left fresh sessions with no `RECALL.md`.
+
 ## [0.5.1] - 2026-09-16
 
 ### Added

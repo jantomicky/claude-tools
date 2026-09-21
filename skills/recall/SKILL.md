@@ -1,11 +1,14 @@
 ---
 name: recall
-description: Write or resume from a RECALL.md (context, decisions, state, TODOs, last messages) so a fresh session or another person can resume without replaying the conversation. Invoke when the user asks to hand off, wrap up, or save context; proactively before a destructive action or when the user signals an interruption; and at session start when RECALL.md exists in the project root.
+description: Write or resume from a RECALL.md (context, decisions, state, TODOs, last messages) so a fresh session or another person can resume without replaying the conversation. Invoke when the user asks to hand off, wrap up, or save context; proactively before a destructive action or when the user signals an interruption; at session start when RECALL.md exists in the project root; and whenever the user says "recall" in any language ("ulož recall", "načti recall", "save recall"). The word always means RECALL.md, never auto-memory.
 ---
 
 # Recall
 
 Write `RECALL.md` in the project root so a fresh session resumes where this one stopped.
+
+"Recall" means this file, not the auto-memory directory. Never save a recall as memory entries: a fresh session
+looks for `RECALL.md` and reports nothing found.
 
 ## When to use
 
