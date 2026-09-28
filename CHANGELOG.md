@@ -3,6 +3,30 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.7.0] - 2026-09-28
+
+### Changed
+
+- `tldr`: 7 rules merged into 5, so the skill obeys its own list cap. Dropped the confirm-before-destructive
+  exception; the harness already carries it.
+- `code-comments`: the two keep sections merged into one, `When to use` dropped as a repeat of the description.
+- `recall`: description cut from 82 to 52 words.
+- `session-context.py` injects the skill bodies without their frontmatter: 456 to 318 words per session and per
+  subagent.
+- TLDR output style reduced to a pointer at the `tldr` skill plus the subagent-relay rule.
+- `portadesign-palette`: `When to use` folded into the intro.
+
+### Fixed
+
+- `recall-trigger.py`: crashed on a `null` prompt; fired on "recalled" and "recalling". Now matches the word and its
+  Czech case endings only, and lets the agent ignore the English verb and the metric.
+
+### Removed
+
+- `session-context.py`: the "recall means RECALL.md" sentence on every session start. The skill description and
+  `recall-trigger.py` already say it.
+- `check-code-comments.py`: duplicate `/**` branch.
+
 ## [0.6.0] - 2026-09-27
 
 ### Added

@@ -5,12 +5,8 @@ description: Default color palette for visual work (Artifacts, mockups, diagrams
 
 # Porta Design Palette
 
-Brand colors from portadesign.cz's live stylesheet.
-
-## When to use
-
-1. The `artifact-design` or `dataviz` skill reaches its color step. Use these tokens instead of its defaults.
-2. Skip only when the user names other colors, a palette, or a brand.
+Use these tokens where `artifact-design` or `dataviz` would pick its default colors. Skip only when the user names
+other colors, a palette, or a brand.
 
 ## Tokens
 

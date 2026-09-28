@@ -8,7 +8,10 @@
 - Follow `skills/tldr/SKILL.md`: action first, numbered steps, no filler, lists capped at 5. A skill that breaks
   `tldr` while telling the agent to follow it is a bug.
 - Write a `SKILL.md` `description` that says what the skill does and when to invoke it.
-- Structure skills like `recall/SKILL.md`: short intro, `## When to use`, numbered sections.
+- Structure skills like `recall/SKILL.md`: short intro, numbered sections. `## When to use` says how to act on each
+  trigger; the `description` is what fires it.
+- State each rule once. `tldr` and `code-comments` are injected into every session and subagent, so every word in
+  them is paid per session.
 - Update `README.md` tables when you add or rename a skill, hook, or output style.
 
 ## Release

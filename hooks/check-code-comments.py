@@ -71,10 +71,6 @@ def offenders(text, suffix):
                 if "*/" in line:
                     in_block = False
                 continue
-            if line.startswith("/**"):
-                if "*/" not in line:
-                    in_block = True
-                continue
             if line.startswith("/*"):
                 if "*/" not in line:
                     in_block = True
