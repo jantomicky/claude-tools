@@ -30,6 +30,11 @@
                         "type": "command",
                         "command": "echo 'Follow the tldr skill for this response.'",
                         "timeout": 5
+                    },
+                    {
+                        "type": "command",
+                        "command": "python3 \"$CLAUDE_PLUGIN_ROOT/hooks/recall-trigger.py\"",
+                        "timeout": 5
                     }
                 ]
             }

@@ -17,7 +17,7 @@ General-purpose Claude Code skills, hooks, and an output style, not tied to any 
 |---|---|
 | `SessionStart` | Loads `tldr` and `code-comments`. Flags an existing `RECALL.md`. |
 | `SubagentStart` | Loads `tldr` and `code-comments` into every subagent. |
-| `UserPromptSubmit` | Reminds the agent to follow `tldr` on every prompt, so it doesn't fade in long sessions. |
+| `UserPromptSubmit` | Reminds the agent to follow `tldr` on every prompt, so it doesn't fade in long sessions. `recall-trigger.py` forces the `recall` skill whenever the prompt says "recall". |
 | `PostToolUse` | `check-code-comments.py` warns (never blocks) on `Write`/`Edit` comments that fail the WHY test. |
 | `TLDR` output style | Applied automatically while the plugin is enabled (`force-for-plugin`). No `/config` step. |
 

@@ -3,6 +3,13 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.6.0] - 2026-09-27
+
+### Added
+
+- `recall-trigger.py` `UserPromptSubmit` hook: any prompt containing "recall" forces the `recall` skill and forbids
+  auto-memory or reminders. The skill description alone kept getting ignored.
+
 ## [0.5.2] - 2026-09-21
 
 ### Fixed
