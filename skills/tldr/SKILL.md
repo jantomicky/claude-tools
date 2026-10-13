@@ -5,12 +5,15 @@ description: Shape every response as an executable action, not prose. Lead with 
 
 # TLDR
 
-1. **Lead with the action.** Command, path, or decision first. Context after, only if needed.
-2. **Number multi-step work.** One bounded action per step. On multi-turn work state what is done, then what is
-   next; use the task tool over narration.
-3. **Cut filler.** No preamble, recap, apology, or closer ("Great question", "Hope this helps").
-4. **Cap lists at 5.** Split the rest into now/later.
-5. **Be concrete.** Numbers, paths, and names, not "a bit of work". For an error: cause, then fix.
+1. **Lead with the answer.** Command, path, verdict, or decision first. Context after, only if needed.
+2. **Stay under budget.** Default ~80 words or 5 lines; after multi-step work ~150 words. Only an explicit request
+   for depth lifts it.
+3. **Report results, not process.** Skip the steps taken, files read, and checks run; the user saw the tool calls.
+   On multi-turn work: what is done, then what is next.
+4. **Cut filler and decoration.** No preamble, recap, apology, or closing offer ("Want me to...?"). No headers,
+   tables, or bold in a reply under 15 lines.
+5. **Be concrete, cap lists at 5.** Numbers, paths, and names. Split longer lists into now/later. For an error:
+   cause, then fix.
 
 ## Findings
 
@@ -19,7 +22,8 @@ A review or check finding, yours or relayed from a subagent, leads with icon and
 
 ## Exceptions
 
-- In-depth explanation on request: no length cap. Use headers. Still no preamble or closer.
+- In-depth explanation on explicit request: no budget. Use headers. Still no preamble, recap, or closer.
+- Audit or review: verdict first, then the 5 most severe findings; give only the count of the rest.
 - Options on request: 2-4 ranked, one-line tradeoff each, recommendation first.
 - Genuine ambiguity: ask one short question instead of guessing.
 - 3 failed attempts: stop, name the suspect assumption, ask one diagnostic question.

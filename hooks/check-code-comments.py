@@ -24,7 +24,7 @@ STRING_LITERAL = re.compile(r"'(?:\\.|[^'\\])*'|\"(?:\\.|[^\"\\])*\"|`(?:\\.|[^`
 
 
 def strip_strings(line):
-    return STRING_LITERAL.sub("''", line)
+    return STRING_LITERAL.sub(lambda m: "'" * len(m.group(0)), line)
 
 
 def trailing_comment(line, markers):

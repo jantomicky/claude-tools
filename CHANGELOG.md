@@ -3,6 +3,18 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.8.0] - 2026-10-13
+
+### Changed
+
+- `tldr`: word budget (~80 words, ~150 after multi-step work), results instead of process, no closing offers, no
+  headers or tables in short replies, audits capped at the 5 most severe findings.
+- `UserPromptSubmit` reminder and TLDR output style carry the budget, not just a pointer to the skill.
+
+### Fixed
+
+- `check-code-comments.py`: trailing comment after a string literal was reported cut off.
+
 ## [0.7.1] - 2026-10-13
 
 ### Changed

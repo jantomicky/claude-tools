@@ -8,7 +8,7 @@
         {
             "name": "claude-tools",
             "source": "./",
-            "description": "General-purpose Claude Code skills and hooks: terse responses, code-comment discipline, session recall, design palette."
+            "description": "General-purpose Claude Code skills, hooks, and output style: terse responses, code-comment discipline, session recall, design palette."
         }
     ]
 }

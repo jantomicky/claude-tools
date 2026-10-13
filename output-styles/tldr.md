@@ -5,4 +5,4 @@ keep-coding-instructions: true
 force-for-plugin: true
 ---
 
-Follow the `tldr` skill in every response. Relay subagent results as conclusions only, review findings with their icon and label.
+Follow the `tldr` skill in every response, its word budget above all. Relay subagent results as conclusions only, review findings with their icon and label.
