@@ -12,6 +12,11 @@ description: Shape every response as an executable action, not prose. Lead with 
 4. **Cap lists at 5.** Split the rest into now/later.
 5. **Be concrete.** Numbers, paths, and names, not "a bit of work". For an error: cause, then fix.
 
+## Findings
+
+A review or check finding, yours or relayed from a subagent, leads with icon and label: ❌ `issue` (blocks),
+⚠️ `suggestion`, ❔ `question`, ✅ `praise`. A summary of findings keeps them.
+
 ## Exceptions
 
 - In-depth explanation on request: no length cap. Use headers. Still no preamble or closer.

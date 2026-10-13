@@ -3,6 +3,13 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.7.1] - 2026-10-13
+
+### Changed
+
+- `tldr` and the TLDR output style: review findings reach the user with their icon and label (❌ ⚠️ ❔ ✅), also
+  when relayed from a subagent.
+
 ## [0.7.0] - 2026-09-28
 
 ### Changed
