@@ -3,6 +3,12 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.8.1] - 2026-10-23
+
+### Changed
+
+- `tldr`: findings lead with the icon alone, without the `issue`/`suggestion`/`question`/`praise` label word.
+
 ## [0.8.0] - 2026-10-13
 
 ### Changed
