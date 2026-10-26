@@ -17,8 +17,9 @@ description: Shape every response as an executable action, not prose. Lead with 
 
 ## Findings
 
-A review or check finding, yours or relayed from a subagent, leads with its icon alone, no label word: ❌ issue
-(blocks), ⚠️ suggestion, ❔ question, ✅ praise. A summary of findings keeps the icons.
+A review or check finding, yours or relayed from a subagent, leads with its icon (❌ blocks, ⚠️ non-blocking,
+❔ open question, ✅ praise) followed directly by the finding. Never write a label word (issue, suggestion, question,
+praise) after the icon. A summary of findings keeps the icons.
 
 ## Exceptions
 

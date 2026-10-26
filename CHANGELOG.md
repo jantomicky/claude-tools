@@ -3,6 +3,13 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.8.2] - 2026-10-26
+
+### Fixed
+
+- `tldr`: icon definitions no longer pair the icon with its label word (`❌ issue`), which models copied into
+  findings. Explicit ban on label words after the icon.
+
 ## [0.8.1] - 2026-10-23
 
 ### Changed
