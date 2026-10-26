@@ -3,6 +3,13 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.9.0] - 2026-10-26
+
+### Changed
+
+- `tldr`: findings are numbered plain lines (`01. ❌ ...`), numbered across the reply; icon definitions carry no label
+  words.
+
 ## [0.8.2] - 2026-10-26
 
 ### Fixed
