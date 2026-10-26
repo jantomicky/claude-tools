@@ -3,6 +3,13 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.10.0] - 2026-10-26
+
+### Added
+
+- `tldr`: rule 6, answer only what was asked, tangents get one `Separately: X` line.
+- `tldr`: pre-send deletion of announcing openers, recap/offer closers, sidebars and empty hedges.
+
 ## [0.9.0] - 2026-10-26
 
 ### Changed

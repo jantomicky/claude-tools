@@ -14,6 +14,10 @@ description: Shape every response as an executable action, not prose. Lead with 
    tables, or bold in a reply under 15 lines.
 5. **Be concrete, cap lists at 5.** Numbers, paths, and names. Split longer lists into now/later. For an error:
    cause, then fix.
+6. **Answer only what was asked.** Anything else gets one line at the end: `Separately: X`.
+
+Before sending, delete: an opening sentence that announces what comes next, a closing one that recaps or offers more,
+any sidebar, any hedge that carries no real uncertainty.
 
 ## Findings
 
