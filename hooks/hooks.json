@@ -33,7 +33,7 @@
                     },
                     {
                         "type": "command",
-                        "command": "python3 \"$CLAUDE_PLUGIN_ROOT/hooks/recall-trigger.py\"",
+                        "command": "python3 \"$CLAUDE_PLUGIN_ROOT/hooks/handoff-trigger.py\"",
                         "timeout": 5
                     }
                 ]

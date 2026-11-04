@@ -3,6 +3,17 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.11.0] - 2026-11-04
+
+### Changed
+
+- `recall` renamed to `handoff`: writes `HANDOFF.md`, trigger word "handoff", hook `handoff-trigger.py`.
+- `handoff`: restarts and breaks point to `/restart` or `claude --continue` instead of writing a file; the file is
+  for `/clear`, another machine or person, or trading a compacted conversation for a clean context.
+- `handoff`: contents drop the last-messages summary, add rejected alternatives and open questions.
+- `SessionStart` flags `HANDOFF.md` only on startup and `/clear`, not on resume or compact.
+- `handoff-trigger.py` no longer forces the skill when the prompt only discusses it.
+
 ## [0.10.0] - 2026-10-26
 
 ### Added
