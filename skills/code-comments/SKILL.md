@@ -1,6 +1,7 @@
 ---
 name: code-comments
 description: Write code without explanatory comments in any language. Keep a comment only if it captures a non-obvious WHY. Always applies when writing or editing code.
+disable-model-invocation: true
 ---
 
 # Code comments

@@ -3,6 +3,18 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.12.0] - 2026-11-09
+
+### Changed
+
+- `tldr`: all numbered lists continue one sequence across the reply, not only findings.
+- `tldr`, `code-comments`: `disable-model-invocation`, hook-injected only; output style trimmed to one line.
+- `SubagentStart` skips `code-comments` for read-only agents.
+
+### Added
+
+- `scripts/lint.py`: JSON, frontmatter, description budget, README coverage, hook targets, version bump.
+
 ## [0.11.0] - 2026-11-04
 
 ### Changed

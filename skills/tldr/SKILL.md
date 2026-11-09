@@ -1,6 +1,7 @@
 ---
 name: tldr
 description: Shape every response as an executable action, not prose. Lead with the answer, number steps, no filler. Always applies to every response, including subagent reports.
+disable-model-invocation: true
 ---
 
 # TLDR
@@ -12,8 +13,9 @@ description: Shape every response as an executable action, not prose. Lead with 
    On multi-turn work: what is done, then what is next.
 4. **Cut filler and decoration.** No preamble, recap, apology, or closing offer ("Want me to...?"). No headers,
    tables, or bold in a reply under 15 lines.
-5. **Be concrete, cap lists at 5.** Numbers, paths, and names. Split longer lists into now/later. For an error:
-   cause, then fix.
+5. **Be concrete, cap lists at 5.** Numbers, paths, and names. Split longer lists into now/later. Numbered lists,
+   findings included, continue one sequence across the reply even under separate headings, so any item can be cited
+   by number alone. For an error: cause, then fix.
 6. **Answer only what was asked.** Anything else gets one line at the end: `Separately: X`.
 
 Before sending, delete: an opening sentence that announces what comes next, a closing one that recaps or offers more,
@@ -22,7 +24,7 @@ any sidebar, any hedge that carries no real uncertainty.
 ## Findings
 
 A review or check finding, yours or relayed from a subagent, is a plain line: zero-padded number, icon, the finding
-(`01. ❌ cron runs a missing script`). Numbering runs across the whole reply, so any finding can be cited by number.
+(`01. ❌ cron runs a missing script`).
 ❌ blocks, ⚠️ does not block, ❔ needs an answer, ✅ marks a non-obvious good decision. Nothing goes between the icon
 and the finding: no label word such as issue, suggestion, question or praise. A summary of findings keeps numbers and
 icons.
