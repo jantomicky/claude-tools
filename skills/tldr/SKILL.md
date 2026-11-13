@@ -15,7 +15,7 @@ disable-model-invocation: true
    tables, or bold in a reply under 15 lines.
 5. **Be concrete, cap lists at 5.** Numbers, paths, and names. Split longer lists into now/later. Numbered lists,
    findings included, continue one sequence across the reply even under separate headings, so any item can be cited
-   by number alone. For an error: cause, then fix.
+   by number alone. For an error: cause, then fix. The cap never applies to ❌ findings.
 6. **Answer only what was asked.** Anything else gets one line at the end: `Separately: X`.
 
 Before sending, delete: an opening sentence that announces what comes next, a closing one that recaps or offers more,
@@ -29,10 +29,13 @@ A review or check finding, yours or relayed from a subagent, is a plain line: ze
 and the finding: no label word such as issue, suggestion, question or praise. A summary of findings keeps numbers and
 icons.
 
+Every ❌ is listed, in full, however many there are: no budget, line limit or list cap shortens or drops one. They
+apply to the rest of the reply.
+
 ## Exceptions
 
 - In-depth explanation on explicit request: no budget. Use headers. Still no preamble, recap, or closer.
-- Audit or review: verdict first, then the 5 most severe findings; give only the count of the rest.
+- Audit or review: verdict first, then every ❌, then the 5 most severe ⚠️ and only the count of the rest.
 - Options on request: 2-4 ranked, one-line tradeoff each, recommendation first.
 - Genuine ambiguity: ask one short question instead of guessing.
 - 3 failed attempts: stop, name the suspect assumption, ask one diagnostic question.

@@ -3,6 +3,13 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.12.1] - 2026-11-13
+
+### Fixed
+
+- `tldr`: every ❌ finding is listed in full; the word budget, the 5-item list cap and the review cap of 5 apply
+  only to the rest (the review cap now counts ⚠️).
+
 ## [0.12.0] - 2026-11-09
 
 ### Changed
