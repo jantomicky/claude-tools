@@ -3,6 +3,15 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.14.0] - 2026-11-25
+
+### Changed
+
+- `tldr`: a reply to the user that reports work, a check or an investigation opens with a verdict (`OK`, `Not OK`,
+  `Open`) and closes with numbered `Next:` steps, one command or one decision each, both labels in the reply's
+  language. The `UserPromptSubmit` reminder repeats it. Replies drifted into prose with no conclusion and no instructions.
+- `tldr`: every list is numbered, never bulleted. A bulleted list of findings could not be answered item by item.
+
 ## [0.13.0] - 2026-11-25
 
 ### Added
