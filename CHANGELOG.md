@@ -3,6 +3,18 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.13.0] - 2026-11-25
+
+### Added
+
+- `workspace-boundary` skill: file access stays in the project root and the folder above it; hook-injected into
+  every session and subagent with the resolved roots.
+- `PreToolUse` hook `workspace_boundary.py`: denies secrets (SSH and GPG keys, keychain, browser, Mail and
+  Messages data, shell history, CLI tokens) and asks the user before any other file tool or `Bash` call reaches
+  outside the workspace, or `Bash` runs `sudo`, app control or a global install. Extra roots via
+  `permissions.additionalDirectories` or `CLAUDE_WORKSPACE_ROOTS`.
+- `scripts/test_workspace_boundary.py`: regression suite for the hook, run by `scripts/lint.py`.
+
 ## [0.12.1] - 2026-11-13
 
 ### Fixed

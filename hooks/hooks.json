@@ -39,6 +39,18 @@
                 ]
             }
         ],
+        "PreToolUse": [
+            {
+                "matcher": "Read|Edit|Write|MultiEdit|NotebookEdit|Glob|Grep|Bash",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "python3 \"$CLAUDE_PLUGIN_ROOT/hooks/workspace_boundary.py\"",
+                        "timeout": 5
+                    }
+                ]
+            }
+        ],
         "PostToolUse": [
             {
                 "matcher": "Write|Edit|MultiEdit",

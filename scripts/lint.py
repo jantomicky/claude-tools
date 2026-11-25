@@ -2,7 +2,8 @@
 """Consistency gate for the plugin. Run from the repo root: python3 scripts/lint.py
 
 Checks what drifts in practice: broken JSON or frontmatter, a description over budget, a skill missing from the
-README, a hook pointing at a missing script, a change without a version bump and changelog entry.
+README, a hook pointing at a missing script, a workspace-boundary regression, a change without a version bump and
+changelog entry.
 """
 import glob
 import json
@@ -82,6 +83,9 @@ def main():
             if target:
                 check(f"{event} hook points at an existing script", os.path.exists(target.group(1)), hook["command"])
         check(f"README documents the {event} hook", f"| `{event}` |" in readme)
+
+    suite = subprocess.run([sys.executable, "scripts/test_workspace_boundary.py"], capture_output=True, text=True)
+    check("workspace boundary regression suite passes", suite.returncode == 0, suite.stdout + suite.stderr)
 
     version = json.load(open(".claude-plugin/plugin.json"))["version"]
     entries = re.findall(r"^## \[(\S+)\]", open("CHANGELOG.md").read(), re.M)
