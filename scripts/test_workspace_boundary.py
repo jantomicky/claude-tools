@@ -66,6 +66,23 @@ BASH_CASES = [
     ("pass", "npm install && npm run build && composer install"),
     ("pass", "git commit -m 'docs: explain sudo and osascript'"),
     ("pass", "grep -rn security src && pip install -r requirements.txt"),
+    ("pass", "sed 's/,/ /g' README.md | tr '/' '_' | awk -F'/' '{print $2}'"),
+    ("pass", "echo $((10 / 2)) && python3 -c 'print(7 // 2)'"),
+    ("pass", 'ls "$dir"/ $(pwd)/ && git log --format="%h / %s"'),
+    ("pass", "grep -E '/[a-z]+/' README.md"),
+    ("pass", "node <<'EOF'\n// note\nconsole.log(4 / 2)\nEOF"),
+    ("pass", "docker compose exec php cat /etc/hosts"),
+    ("pass", "docker compose -f compose.yml run --rm -w /app php ls /etc /"),
+    ("pass", "kubectl -n shop exec pod -- cat /etc/hosts"),
+    ("pass", "ssh deploy@host.example 'ls /etc /' && git status"),
+    ("pass", "grep -rn /etc/claude-tools-absent ."),
+    ("ask", "ls /*.md"),
+    ("ask", "cd / && ls"),
+    ("ask", 'echo "$(ls /)"'),
+    ("ask", "docker run -v ~/Documents:/data alpine ls /data"),
+    ("ask", "docker compose exec php cat /etc/hosts > ~/Documents/hosts.txt"),
+    ("ask", "docker compose exec php true; cat /etc/hosts"),
+    ("ask", "ssh -i ~/Documents/key deploy@host.example ls"),
     ("ask", "cat ~/.ssh/config"),
     ("deny", "cat ~/.ssh/id_rsa"),
     ("deny", "ls -la $HOME/.ssh"),
@@ -92,6 +109,8 @@ BASH_CASES = [
     ("deny", "echo $(gh auth token)"),
     ("ask", "pip install --user requests"),
 ]
+if sys.platform == "darwin":
+    BASH_CASES.append(("ask", "touch /Users/Shared/claude-tools-absent.txt"))
 
 ROOT_CASES = [
     ("ask", "Read", {"file_path": f"{HOME}/.zshrc"}, {"project": f"{HOME}/proj"}),

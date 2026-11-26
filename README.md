@@ -42,8 +42,9 @@ The hook has two tiers:
    `~/.npmrc`, `~/.netrc`, `~/.config/gh/hosts.yml` and similar) and token-printing commands (`gh auth token`).
    No prompt and no override: an explicit request can come from a planted README.
 2. **Everything else outside, confirmed by the user.** File tools ask for every outside path. `Bash` asks for the
-   home folder and for system paths that exist on this machine, so a binary called by absolute path or a path
-   inside a container stays quiet. It also asks for `sudo`, app control (`osascript`) and global installs.
+   home folder and for system paths on this machine that exist or that the call could create. A binary called by
+   absolute path stays quiet, and so does whatever runs in a container or on another host (`docker exec`,
+   `docker run`, `kubectl exec`, `ssh`). It also asks for `sudo`, app control (`osascript`) and global installs.
 
 `Bash` is parsed heuristically and MCP tools are covered by the skill only, so the hook is a guardrail, not a
 sandbox. `scripts/test_workspace_boundary.py` is the regression suite; `scripts/lint.py` runs it.

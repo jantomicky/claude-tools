@@ -3,6 +3,16 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.14.1] - 2026-11-26
+
+### Fixed
+
+- `workspace_boundary.py`: a `/` that is not a shell word of its own no longer counts as the root folder (`sed`
+  expressions, divisions, comments, `"$dir"/`).
+- `workspace_boundary.py`: paths that run in a container or on another host (`docker exec`, `docker run`,
+  `kubectl exec`, `ssh`) stay quiet, flags that name local paths excepted. A missing system path asks only when
+  the call could create it.
+
 ## [0.14.0] - 2026-11-25
 
 ### Changed

@@ -10,9 +10,12 @@ Secrets are denied whatever the workspace is and whoever asked, because the requ
 SSH and GPG keys, keychains, browser, Mail and Messages data, shell history, CLI token files, and the commands that
 print them.
 
-File tools ask for every other outside path. Bash asks only for the home folder and for system data that exists on
-this machine: a binary called by absolute path and a path inside a container stay quiet. Bash also asks for commands
-that leave the workspace without naming a path: root, other apps, global installs.
+File tools ask for every other outside path. Bash asks only for the home folder and for system data on this machine:
+a path that exists, or one the call could create. A binary called by absolute path stays quiet, and so does whatever
+runs in a container or on another host (`docker exec`, `docker run`, `kubectl exec`, `ssh`), apart from the flags
+that name local paths. The root folder counts only as an unquoted word of its own, so a `/` in a `sed` expression,
+a division or a comment stays quiet. Bash also asks for commands that leave the workspace without naming a path:
+root, other apps, global installs.
 
 The hook never answers "allow": an inside path falls through to the normal permission flow.
 """
@@ -56,6 +59,19 @@ GLOB_CHARS = re.compile(r"[*?\[{]")
 SHELL_SPLIT = re.compile(r"[\s;|&<>()'\"`=:,]+")
 TILDE = re.compile(r"(?<![\w/.~$-])~(?=[/\s'\"]|$)")
 COMMAND_START = r"(?:^|[;&|(`\n]|\$\()\s*(?:\w+=\S*\s+)*"
+SINGLE_QUOTED = r"'[^']*'"
+DOUBLE_QUOTED = r"\"(?:\\.|[^\"\\])*\""
+REMOTE = re.compile(
+    COMMAND_START
+    + r"(?:(?:docker|podman|nerdctl)(?:[ -]compose)?\b[^;&|<>\n]*?\s(?:exec|run)|kubectl\b[^;&|<>\n]*?\sexec|ssh)(?=\s)"
+    + "((?:[^;&|<>\\n'\"]|" + SINGLE_QUOTED + "|" + DOUBLE_QUOTED + ")*)"
+)
+LOCAL_FLAGS = re.compile(r"(?<!\S)(?:-v|--volume|--mount|--env-file|--cidfile|-i|-F)[=\s]+(\S+)")
+NOT_A_SHELL_WORD = re.compile(
+    r"<<-?\s*(['\"]?)(\w+)\1.*?\n\s*\2\b|\$\(\(.*?\)\)|" + SINGLE_QUOTED + r"|\"(?:\\.|[^\"\\$`]|\$(?!\())*\"",
+    re.DOTALL,
+)
+ROOT_WORD = re.compile(r"(?<![^\s;|&(=])/(?=$|[\s;|&)*?\[{])")
 
 
 def commands(*labelled):
@@ -140,7 +156,8 @@ def is_program(path):
 
 
 def on_this_machine(path):
-    return os.path.lexists(path) or os.path.isdir(os.path.dirname(path))
+    parent = os.path.dirname(path)
+    return os.path.lexists(path) or (os.path.isdir(parent) and os.access(parent, os.W_OK))
 
 
 def bash_outside(path):
@@ -162,11 +179,22 @@ def file_tool_paths(tool_name, tool_input, cwd):
     return paths
 
 
+def local_part(command):
+    """Drop what runs in a container or on another host, keeping the flag values that name local paths."""
+    return REMOTE.sub(
+        lambda match: match.group(0)[: match.start(1) - match.start(0)]
+        + " "
+        + " ".join(LOCAL_FLAGS.findall(match.group(1))),
+        command,
+    )
+
+
 def bash_paths(command, cwd):
-    paths = []
-    for token in SHELL_SPLIT.split(expand_home(command)):
+    command = expand_home(command)
+    paths = ["/"] if ROOT_WORD.search(NOT_A_SHELL_WORD.sub("_", command)) else []
+    for token in SHELL_SPLIT.split(command):
         token = GLOB_CHARS.split(token, maxsplit=1)[0]
-        if "/" in token or token == "..":
+        if token.strip("/") and ("/" in token or token == ".."):
             paths.append(resolve(token, cwd))
     return paths
 
@@ -182,7 +210,8 @@ def classify(payload):
         secrets = [label for label, pattern in SECRET_COMMANDS if pattern.search(command)]
         secrets += [match.group(0) for match in SECRET_PATHS.finditer(expand_home(command).replace("\\ ", " "))]
         outside = [label for label, pattern in OUTSIDE_COMMANDS if pattern.search(command)]
-        outside += [path for path in paths if bash_outside(path) and not inside(path, roots)]
+        local = bash_paths(local_part(command), cwd)
+        outside += [path for path in local if bash_outside(path) and not inside(path, roots)]
     else:
         paths = file_tool_paths(payload.get("tool_name"), tool_input, cwd)
         secrets = []
