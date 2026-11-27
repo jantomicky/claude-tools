@@ -14,7 +14,9 @@ disable-model-invocation: true
    tables, or bold in a reply under 15 lines.
 5. **Be concrete, cap lists at 5.** Numbers, paths, and names. Split longer lists into now/later. Every list is
    numbered, never bulleted, findings included, in one sequence across the reply even under separate headings, so
-   any item can be cited by number alone. For an error: cause, then fix. The cap never applies to ❌ findings.
+   any item can be cited by number alone. Sub-steps go in a nested list indented under their item, never in a
+   second flat list, and a top-level number never repeats within a reply. Answer an item from an earlier message
+   in the text (`On 3:`), not as a list number. For an error: cause, then fix. The cap never applies to ❌ findings.
 6. **Answer only what was asked.** Anything else gets one line at the end: `Separately: X`.
 
 Before sending, delete: an opening sentence that announces what comes next, a closing one that recaps or offers more,

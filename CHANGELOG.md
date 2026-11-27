@@ -3,6 +3,14 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.15.0] - 2026-11-27
+
+### Changed
+
+- `tldr`: sub-steps nest under their item instead of starting a second flat list, a top-level number never repeats
+  within a reply, and an item from an earlier message is answered in the text, not as a list number.
+- `UserPromptSubmit` reminder repeats the list rule on every prompt, so numbering holds in long sessions.
+
 ## [0.14.1] - 2026-11-26
 
 ### Fixed
