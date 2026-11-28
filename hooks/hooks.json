@@ -28,7 +28,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "echo 'tldr: answer first, ~80 words unless the user asked for depth. Reporting work or a check: open with OK / Not OK / Open, close with numbered Next: steps, both labels in the reply language. Lists: one numbered sequence, sub-steps nested under their item. No step recap, no closing offer.'",
+                        "command": "echo 'tldr: answer first, ~80 words unless the user asked for depth. Reporting work or a check: open with ✅ OK / ❌ NOK / ❔ Open alone on its line, close with numbered ➡️ Next: steps, labels in the reply language. Findings under ❌ Blocking / ⚠️ Non-blocking / 💭 Minor labels, items without icons. Lists: one numbered sequence, sub-steps nested under their item. No step recap, no closing offer.'",
                         "timeout": 5
                     },
                     {

@@ -3,6 +3,16 @@
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.16.0] - 2026-11-28
+
+### Changed
+
+- `tldr`: the verdict stands alone on its line with an icon (`✅ OK`, `❌ NOK`, `❔ Open`), what and why on the next;
+  `Next:` becomes `➡️ Next:`.
+- `tldr`: findings go under icon section labels (`❌ Blocking`, `⚠️ Non-blocking`, `💭 Minor`, `❔ Questions`,
+  `✅ Good`), items numbered without icons. Every finding is listed; minor ones no longer collapse into a count.
+- `tldr`: a review of a change opens with `📋 Summary #<id>:` after the verdict, at most 3 unnumbered one-clause lines.
+
 ## [0.15.0] - 2026-11-27
 
 ### Changed
